@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
+#    By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/16 17:49:34 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/16 21:34:49 by jlarue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ INC_DIR			= includes/
 #################################### Source ####################################
 SRC_DIR			= sources/
 SRC				= $(addprefix $(SRC_DIR), $(C_FILE))
-C_FILE			=
+C_FILE			= main.c/
+					map_check01.c/
+					map_check02.c
 #################################### Object ####################################
 OBJ_PATH		= .obj/
 OBJ				= $(SRC:.c=.o)
