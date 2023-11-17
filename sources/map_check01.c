@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check01.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:16:17 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/17 03:18:31 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 06:09:24 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool	check_surrounding_walls_col(char **map)
 	return (FALSE);
 }
 
-bool	map_error_controler(char **map)
+bool	map_error_controler(char **map, t_data *data)
 {
 	if (check_surrounding_walls_line(map))
 		return (TRUE);
@@ -93,5 +93,6 @@ bool	map_error_controler(char **map)
 		return (TRUE);
 	if (check_single_player(map))
 		return (TRUE);
+	init_player_position(data->player, map);
 	return (FALSE);
 }
