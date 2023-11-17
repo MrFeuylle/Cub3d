@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 02:26:20 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 05:05:58 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ typedef struct s_rgb
 	int	green;
 	int	blue;
 }	t_rgb;
+
+typedef struct s_double
+{
+	int	no;
+	int	so;
+	int	we;
+	int	ea;
+	int	fl;
+	int	ce;
+}	t_double;
 
 
 typedef struct s_tex

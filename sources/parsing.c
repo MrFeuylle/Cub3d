@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 03:16:41 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 05:14:35 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int	check_tex(t_data *data, char *str, char *emp)
 	void	*img;
 	char	*path;
 
-
 	path = get_path(str);
 	if (!path)
 		return (printf("Error\nCan't find the path at %s", str));
 	path = ft_strtrim(path, "\n");
-	img = mlx_xpm_file_to_image(data->mlx, path, &data->tex->width, &data->tex->height);
+	img = mlx_xpm_file_to_image(data->mlx,
+			path, &data->tex->width, &data->tex->height);
 	free(path);
 	if (!img)
 		return (printf("Error\nCan't open the xpm at line %s", str));
@@ -111,8 +111,8 @@ bool	parsing(t_data *data, char *str)
 
 	nbl = 0;
 	fd = open(str, O_RDONLY);
-	if (!fd)
-		return (perror(""), 1);
+	if (fd < 0)
+		return (printf("Error\n"), perror(str), TRUE);
 	str2 = get_next_line(fd);
 	while (str2)
 	{
@@ -121,9 +121,11 @@ bool	parsing(t_data *data, char *str)
 		str2 = get_next_line(fd);
 	}
 	fd = open(str, O_RDONLY);
-	if (!fd)
-		return (perror(""), 1);
+	if (fd < 0)
+		return (printf("Error\n"), perror(str), TRUE);
 	data->file = get_file(fd, nbl);
+	if (check_double(data))
+		return (TRUE);
 	if (check_file(data))
 		return (TRUE);
 	return (FALSE);

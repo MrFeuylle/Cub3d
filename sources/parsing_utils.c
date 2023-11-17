@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:35:59 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 03:13:58 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 04:40:51 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	check_map(char *str)
 {
 	char	*str2;
 
-	str2 = ft_strtrim(str, " 	");
+	str2 = ft_strtrim(str, " 	\n");
 	if (str2)
 		if (ft_strlen(str2))
 			return (TRUE);
@@ -97,5 +97,7 @@ bool	ft_strcmp(char *str, char *str2)
 			return (FALSE);
 		i++;
 	}
+	if (str2[i])
+		return (FALSE);
 	return (TRUE);
 }

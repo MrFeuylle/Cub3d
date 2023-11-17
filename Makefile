@@ -6,7 +6,7 @@
 #    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/17 02:16:39 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/17 05:13:06 by agiguair         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ C_FILE			= main.c\
 				map_check01.c\
 				map_check02.c\
 				parsing.c\
-				parsing_utils.c
+				parsing_utils.c\
+				parsing_utils2.c
 #################################### Object ####################################
 OBJ_PATH		= .obj/
 OBJ				= $(SRC:.c=.o)

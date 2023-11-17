@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 02:49:09 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 04:22:58 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,19 @@ t_data	*set_null_data(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	*data;
+	int		i;
 
+	i = 0;
 	data = NULL;
 	if (argc != 2)
 		return (printf("Error\nNeed maps .cub\n"));
+	while (argv[1][i])
+		i++;
+	if (i < 5)
+		return (printf("Error\nNeed a map .cub\n"));
+	i -= 4;
+	if (ft_strncmp(&argv[1][i], ".cub", 4))
+		return (printf("Error\nNeed a map .cub\n"));
 	data = init_data(data);
 	if (!data)
 		return (1);

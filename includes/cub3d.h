@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 03:15:56 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 05:13:47 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,7 @@ char	*get_path(char *str);
 int		check_tex(t_data *data, char *str, char *emp);
 bool	check_file(t_data *data);
 bool	parsing(t_data *data, char *str);
+/*----------parsing_utils2.c--------*/
+bool	error_double(t_double d);
+bool	check_double(t_data *data);
 #endif
