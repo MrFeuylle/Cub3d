@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_check01.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:16:17 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/16 21:08:35 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/17 03:18:31 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	check_single_player(char **map)
+bool	check_single_player(char **map)
 {
 	int	i;
 	int	j;
@@ -33,15 +33,15 @@ int	check_single_player(char **map)
 		}
 		i++;
 	}
-	if (nb_player != 0)
+	if (nb_player != 1)
 	{
-		printf("Error\nThere are %d player(s) in the map", nb_player);
-		return (-1);
+		printf("Error\nThere are %d player(s) in the map\n", nb_player);
+		return (TRUE);
 	}
-	return (0);
+	return (FALSE);
 }
 
-int	check_surrounding_walls_line(char **map)
+bool	check_surrounding_walls_line(char **map)
 {
 	int	i;
 	int	j;
@@ -53,16 +53,17 @@ int	check_surrounding_walls_line(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (check_next_char_line(map, i, j) == -1
-				|| check_prev_char_line(map, i, j) == -1)
-				return (-1);
-			i++;
+			if (check_next_char_line(map, i, j)
+				|| check_prev_char_line(map, i, j))
+				return (TRUE);
+			j++;
 		}
+		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
-int	check_surrounding_walls_col(char **map)
+bool	check_surrounding_walls_col(char **map)
 {
 	int	i;
 	int	j;
@@ -74,22 +75,23 @@ int	check_surrounding_walls_col(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (check_next_char_col(map, i, j) == -1
-				|| check_prev_char_col(map, i, j) == -1)
-				return (-1);
-			i++;
+			if (check_next_char_col(map, i, j)
+				|| check_prev_char_col(map, i, j))
+				return (TRUE);
+			j++;
 		}
+		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
-bool	error_controler(char **map)
+bool	map_error_controler(char **map)
 {
-	if (check_surrounding_walls_line(map) == -1)
-		return (1);
-	if (check_surrounding_walls_col(map) == -1)
-		return (1);
-	if (check_single_player(map) == -1)
-		return (1);
-	return (0);
+	if (check_surrounding_walls_line(map))
+		return (TRUE);
+	if (check_surrounding_walls_col(map))
+		return (TRUE);
+	if (check_single_player(map))
+		return (TRUE);
+	return (FALSE);
 }
