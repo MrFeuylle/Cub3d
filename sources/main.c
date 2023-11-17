@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 04:22:58 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 05:47:21 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ t_data	*init_data(t_data *data)
 	data->tex->ce = malloc(sizeof(t_rgb));
 	if (!data->tex->ce)
 		return (free(data->tex->fl), free(data->tex), free(data), NULL);
+	data->player = malloc(sizeof(t_player));
+	if (!data->player)
+		return (free(data->tex->ce), free(data->tex->fl),
+			free(data->tex), free(data), NULL);
 	return (data);
 }
 

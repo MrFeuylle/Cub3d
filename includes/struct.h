@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 05:05:58 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 05:46:26 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,23 @@ typedef struct s_tex
 }	t_tex;
 
 
+typedef struct s_player
+{
+	double		x;
+	double		y;
+	double		dx;
+	double		dy;
+}	t_player;
+
 typedef struct s_data
 {
-	void	*mlx;
-	void	*img;
-	t_tex	*tex;
-	char	**map;
-	void	*win;
-	char	**file;
+	void		*mlx;
+	void		*img;
+	t_tex		*tex;
+	t_player	*player;
+	char		**map;
+	void		*win;
+	char		**file;
 }	t_data;
 
 #endif
