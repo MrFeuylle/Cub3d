@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 05:14:35 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 06:08:07 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ bool	check_file(t_data *data)
 			check_fc(data, data->file[i]);
 		else if (check_map(data->file[i]))
 		{
-			if (!map_error_controler(&data->file[i]))
+			if (!map_error_controler(&data->file[i], data))
 				data->map = &data->file[i];
 			break ;
 		}

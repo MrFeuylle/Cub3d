@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:35:59 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 04:40:51 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 06:03:15 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ bool	check_map(char *str)
 	str2 = ft_strtrim(str, " 	\n");
 	if (str2)
 		if (ft_strlen(str2))
-			return (TRUE);
-	return (FALSE);
+			return (free(str2), TRUE);
+	return (free(str2), FALSE);
 }
 
 bool	check_all(t_data *data)

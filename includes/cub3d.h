@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 05:13:47 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/17 06:12:14 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <stdbool.h>
 
 /*--------map_check01.c--------*/
-bool	map_error_controler(char **map);
+bool	map_error_controler(char **map, t_data *data);
 bool	check_surrounding_walls_col(char **map);
 bool	check_surrounding_walls_line(char **map);
 bool	check_single_player(char **map);
@@ -54,4 +54,11 @@ bool	parsing(t_data *data, char *str);
 /*----------parsing_utils2.c--------*/
 bool	error_double(t_double d);
 bool	check_double(t_data *data);
+/*-----------event.c---------------*/
+int		handle_no_event(void *data);
+int		handle_input(int keysym, t_data *data);
+int		cross_kill(t_data *data);
+/*--------------free.c-------------*/
+void	free_all(t_data *data);
+void	init_player_position(t_player *player, char **map);
 #endif
