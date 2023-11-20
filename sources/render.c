@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:52:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 16:52:19 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:41:24 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,7 @@ void do_square(t_data *data, int cppw, int cpph, int x ,int y, int k)
 
 void	set_on_map_player(t_data *data, int cppw, int cpph)
 {
-	if (data->player->dx == 1 && data->player->dy == 0)
 		do_square(data, cppw, cpph, round(data->player->x * cpph), round(data->player->y * cppw), 7929738);
-	if (data->player->dx == -1 && data->player->dy == 0)
-		do_square(data, cppw, cpph, round(data->player->x * cpph), round(data->player->y * cppw), 16775956);
-	if (data->player->dx == 0 && data->player->dy == 1)
-		do_square(data, cppw, cpph, round(data->player->x * cpph), round(data->player->y * cppw), 16711680);
-	if (data->player->dx == 0 && data->player->dy == -1)
-		do_square(data, cppw, cpph, round(data->player->x * cpph), round(data->player->y * cppw), 5130239);
-
 }
 
 void	do_map(t_data *data)

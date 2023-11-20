@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:35:59 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 11:44:59 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:16:44 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,20 @@ void	check_fc(t_data *data, char *str)
 		data->tex->fl->red = ft_atoi(&str[i + 1]);
 		while (str[i] != ',' && str[i])
 			i++;
-		i++;
-		data->tex->fl->green = ft_atoi(&str[i]);
+		data->tex->fl->green = ft_atoi(&str[++i]);
 		while (str[i] != ',' && str[i])
 			i++;
-		i++;
-		data->tex->fl->blue = ft_atoi(&str[i]);
+		data->tex->fl->blue = ft_atoi(&str[++i]);
 	}
 	if (str[i] == 'C')
 	{
 		data->tex->ce->red = ft_atoi(&str[i + 1]);
 		while (str[i] != ',' && str[i])
 			i++;
-		i++;
-		data->tex->ce->green = ft_atoi(&str[i]);
+		data->tex->ce->green = ft_atoi(&str[++i]);
 		while (str[i] != ',' && str[i])
 			i++;
-		i++;
-		data->tex->ce->blue = ft_atoi(&str[i]);
+		data->tex->ce->blue = ft_atoi(&str[++i]);
 	}
 }
 

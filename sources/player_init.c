@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:48 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/20 16:49:51 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:15:41 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_player_direction(char dir, t_player *player)
 		player->dy = 0;
 	}
 	player->plane_x = -player->dy;
-    player->plane_y = player->dx;
+	player->plane_y = player->dx;
 }
 
 void	init_player_position(t_player *player, char **map)

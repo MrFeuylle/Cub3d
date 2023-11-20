@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 17:37:14 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 22:39:48 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ void	lauch_mlx(t_data *data)
 	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel,
 			&data->img->line_length, &data->img->endian);
-	mlx_loop_hook(data->mlx, &handle_no_event, data);
-	mlx_key_hook(data->win, &handle_input, data);
+	// mlx_key_hook(data->win, &handle_input, data);
 	mlx_hook(data->win, 17, (1L << 17), &cross_kill, data);
+	mlx_hook(data->win, 2, (1L << 0), &key_press, data);
+	mlx_hook(data->win, 3, (1L << 1), &key_release, data);
+	mlx_loop_hook(data->mlx, &handle_no_event, data);
 }
 
 void	rayinit(t_data	*data)
@@ -109,10 +111,14 @@ int	main(int argc, char **argv)
 	if (parsing(data, argv[1]))
 		return (1);
 	rayinit(data);
+	data->rl = 0;
+	data->rr = 0;
+	data->mb = 0;
+	data->mf = 0;
 	lauch_mlx(data);
-	//do_floor_cel(data);
+	do_floor_cel(data);
 	raycast(data);
-	// do_map(data);
+	do_map(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 	// raycasting(data);
 
