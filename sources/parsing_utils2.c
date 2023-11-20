@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:04:04 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 05:19:52 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:23:06 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,25 @@ bool	check_double(t_data *data)
 		i++;
 	}
 	return (error_double(d));
+}
+
+void	do_wh_map(t_data *data)
+{
+	int	w;
+	int	h;
+	int	max;
+
+	max = 0;
+	h = 0;
+	while (data->map[h])
+	{
+		w = 0;
+		while (data->map[h][w])
+			w++;
+		if (w > max)
+			max = w;
+		h++;
+	}
+	data->w_map = max;
+	data->h_map = h;
 }

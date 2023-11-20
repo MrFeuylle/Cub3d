@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 06:05:34 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 17:37:14 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ t_data	*init_data(t_data *data)
 	if (!data->player)
 		return (free(data->tex->ce), free(data->tex->fl),
 			free(data->tex), free(data), NULL);
+	data->ray = malloc(sizeof(t_ray));
+	if (!data->player)
+		return (free(data->player), free(data->tex->ce),
+			free(data->tex->fl), free(data->tex), free(data), NULL);
+	data->img = malloc(sizeof(t_img));
+	if (!data->img)
+		return (free(data->ray), free(data->player), free(data->tex->ce),
+			free(data->tex->fl), free(data->tex), free(data), NULL);
 	return (data);
 }
 
@@ -48,9 +56,33 @@ t_data	*set_null_data(t_data *data)
 void	lauch_mlx(t_data *data)
 {
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3D");
+	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel,
+			&data->img->line_length, &data->img->endian);
 	mlx_loop_hook(data->mlx, &handle_no_event, data);
 	mlx_key_hook(data->win, &handle_input, data);
 	mlx_hook(data->win, 17, (1L << 17), &cross_kill, data);
+}
+
+void	rayinit(t_data	*data)
+{
+	data->ray->raydirx = 0;
+	data->ray->raydiry = 0;
+	data->ray->sidedistx = 0;
+	data->ray->sidedisty = 0;
+	data->ray->deltadistx = 0;
+	data->ray->deltadisty = 0;
+	data->ray->perpwalldist = 0;
+	data->ray->camerax = 0;
+	data->ray->lineheight = 0;
+	data->ray->mapx = 0;
+	data->ray->mapy = 0;
+	data->ray->drawstart = 0;
+	data->ray->drawend = 0;
+	data->ray->side = 0;
+	data->ray->stepx = 0;
+	data->ray->stepy = 0;
+	data->ray->hit = 0;
 }
 
 int	main(int argc, char **argv)
@@ -76,7 +108,14 @@ int	main(int argc, char **argv)
 	data->mlx = mlx_init();
 	if (parsing(data, argv[1]))
 		return (1);
+	rayinit(data);
 	lauch_mlx(data);
+	//do_floor_cel(data);
+	raycast(data);
+	// do_map(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
+	// raycasting(data);
+
 	mlx_loop(data->mlx);
 	return (0);
 }

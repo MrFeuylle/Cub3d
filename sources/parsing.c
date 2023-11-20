@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/17 06:08:07 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:18:41 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,30 @@ char	*get_path(char *str)
 	return (NULL);
 }
 
+t_texture	*do_img(t_data *data, char *path)
+{
+	t_texture	*tex;
+
+	tex = malloc(sizeof(t_texture));
+	tex->img = mlx_xpm_file_to_image(data->mlx,
+			path, &tex->width, &tex->height);
+	if (!tex->img)
+		return (NULL);
+	tex->addr = mlx_get_data_addr(tex->img,
+			&tex->bits_per_pixel, &tex->line_length, &tex->endian);
+	return (tex);
+}
+
 int	check_tex(t_data *data, char *str, char *emp)
 {
-	void	*img;
-	char	*path;
+	t_texture	*img;
+	char		*path;
 
 	path = get_path(str);
 	if (!path)
 		return (printf("Error\nCan't find the path at %s", str));
 	path = ft_strtrim(path, "\n");
-	img = mlx_xpm_file_to_image(data->mlx,
-			path, &data->tex->width, &data->tex->height);
+	img = do_img(data, path);
 	free(path);
 	if (!img)
 		return (printf("Error\nCan't open the xpm at line %s", str));

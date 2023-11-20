@@ -6,7 +6,7 @@
 #    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/17 06:12:03 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/20 11:03:08 by agiguair         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ C_FILE			= main.c\
 				parsing_utils2.c\
 				event.c\
 				free.c\
-				player_init.c
+				player_init.c\
+				raycasting.c\
+				render.c
 #################################### Object ####################################
 OBJ_PATH		= .obj/
 OBJ				= $(SRC:.c=.o)
