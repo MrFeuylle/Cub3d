@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:49:39 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:21:39 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:22:05 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_mini	*set_mini(t_data *data, double angle, t_mini *mini)
 {
-	mini->cppw = 10;
-	mini->cpph = 10;
+	mini->cppw = 10 / map_size_scale(data->map);
+	mini->cpph = mini->cppw;
 	mini->x1 = round(data->player->x * mini->cppw);
 	mini->y1 = round(data->player->y * mini->cpph);
 	mini->x2 = round((data->player->x + cos(angle)
@@ -91,7 +91,7 @@ void	do_map(t_data *data)
 	int	i;
 	int	j;
 
-	cpph = 10;
+	cpph = 10 / map_size_scale(data->map);
 	i = -1;
 	y = 0;
 	while (data->map[++i])

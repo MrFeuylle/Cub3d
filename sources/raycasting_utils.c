@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:38:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 08:44:56 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:06:25 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,16 @@ void	set_ray_dl(t_data *data, t_texture *texture)
 		data->ray->wallx = data->player->x
 			+ data->ray->perpwalldist * data->ray->raydirx;
 	data->ray->wallx -= floor(data->ray->wallx);
-	data->ray->texx = (int)(data->ray->wallx * texture->width);
-	if ((data->ray->side == 0 && data->ray->raydirx > 0)
-		|| (data->ray->side == 1 && data->ray->raydiry < 0))
-		data->ray->texx = texture->width - data->ray->texx - 1;
+	data->ray->texx = (int)(data->ray->wallx * (double)texture->width);
+	if ((data->ray->side == 0 && data->ray->raydirx > 0) || (data->ray->side == 1 && data->ray->raydiry < 0))
+        data->ray->texx = texture->width - data->ray->texx - 1;
+    data->ray->step = 1.0 * texture->height / data->ray->lineheight;
+    data->ray->texpos = (data->ray->drawstart - HEIGHT / 2 + data->ray->lineheight / 2) * data->ray->step;
 	data->ray->step = 1.0 * texture->height / data->ray->lineheight;
+	data->ray->texx = texture->width - data->ray->texx - 1;
 	data->ray->texpos = (data->ray->drawstart - HEIGHT / 2
 			+ data->ray->lineheight / 2) * data->ray->step;
 }
-
 void	draw_line(t_data *data, int x, int y1, int y2)
 {
 	int			y;
@@ -57,11 +58,12 @@ void	draw_line(t_data *data, int x, int y1, int y2)
 	y = y1;
 	texture = get_texture(data);
 	set_ray_dl(data, texture);
+	printf("%f --- \n",data->ray->texx);
 	while (y <= y2)
 	{
 		data->ray->texy = (int)data->ray->texpos & (texture->height - 1);
 		data->ray->tex_offset = data->ray->texy * texture->line_length
-			- data->ray->texx * (texture->bits_per_pixel / 8);
+			+ data->ray->texx * (texture->bits_per_pixel / 8);
 		rgb.red = (unsigned char)texture->addr[data->ray->tex_offset + 2];
 		rgb.green = (unsigned char)texture->addr[data->ray->tex_offset + 1];
 		rgb.blue = (unsigned char)texture->addr[data->ray->tex_offset];

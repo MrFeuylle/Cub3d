@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:23:15 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:04:14 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_ray
 	double	step;
 	double	wallx;
 	int		tex_offset;
-	int		texx;
+	double	texx;
 	int		texy;
 	int		lineheight;
 	int		mapx;

@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:48 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/21 08:06:36 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:13:11 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	init_player_position(t_player *player, char **map)
 				|| map[i][j] == 'W')
 			{
 				player->x = j;
+				player->x += 0.5;
 				player->y = i;
+				player->y += 0.5;
 				return (init_player_direction(map[i][j], player));
 			}
 			j++;

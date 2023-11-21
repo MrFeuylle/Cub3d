@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:09:48 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:22:36 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	view_player(t_data *data);
 void	clear_map(t_data *data);
 void	do_map(t_data *data);
 void	set_on_map_player(t_data *data, int cpph);
+int		map_size_scale(char **map);
 #endif

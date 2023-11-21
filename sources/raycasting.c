@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:17:46 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 13:06:03 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	set_value_for_x(t_data *data, int x)
 {
-	data->ray->fov = M_PI / 2;
+	data->ray->fov = M_PI / 4;
 	data->ray->camerax = 2 * x / (double)WIDTH - 1;
 	data->ray->rayangle = atan2(data->player->dy, data->player->dx)
 		+ atan((x - WIDTH / 2.0) / (0.5 * WIDTH / tan(data->ray->fov / 2.0)));
