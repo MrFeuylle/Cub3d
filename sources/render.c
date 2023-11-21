@@ -6,12 +6,11 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:52:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 22:41:24 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 09:09:07 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
 
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color)
 {
@@ -28,7 +27,6 @@ int	rgb_to_int(t_rgb *rgb)
 {
 	return (((rgb->red << 16) | (rgb->green << 8) | (rgb->blue)));
 }
-
 
 void	do_floor_cel(t_data *data)
 {
@@ -51,76 +49,26 @@ void	do_floor_cel(t_data *data)
 	}
 }
 
-void do_square(t_data *data, int cppw, int cpph, int x ,int y, int k)
+void	do_square(t_data *data, int cppw, int x, int y)
 {
-	int i;
-	int j;
-
-	i = cppw / 4 ;
-	while (i < cppw)
-	{
-		j = -cpph / 4;
-		while (j < cpph)
-		{
-				my_mlx_pixel_put(data, x + i, y + j, k);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	set_on_map_player(t_data *data, int cppw, int cpph)
-{
-		do_square(data, cppw, cpph, round(data->player->x * cpph), round(data->player->y * cppw), 7929738);
-}
-
-void	do_map(t_data *data)
-{
-	int cppw;
-	int	cpph;
-	int	x;
-	int y;
 	int	i;
 	int	j;
 
-
-	cpph = round(WIDTH / data->w_map);
-	cppw = round(HEIGHT / data->h_map);
 	i = 0;
-	y = 1;
-	while (data->map[i])
+	while (i < cppw)
 	{
 		j = 0;
-		x = 0;
-		while (data->map[i][j])
+		while (j < cppw)
 		{
-			if (data->map[i][j] == '1')
-			{
-				do_square(data, cppw, cpph, x, y, 16777215);
-			}
-			x += cpph;
+			my_mlx_pixel_put(data, x + i, y + j, 16777215);
 			j++;
 		}
-		y += cppw;
 		i++;
 	}
-	set_on_map_player(data, cppw, cpph);
 }
 
-void	clear_map(t_data *data)
+void	set_on_map_player(t_data *data, int cppw)
 {
-	int y;
-	int x;
-
-	y = 0;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			my_mlx_pixel_put(data, x, y , 0);
-			x++;
-		}
-		y++;
-	}
+	my_mlx_pixel_put(data, round(data->player->x * cppw),
+		round(data->player->y * cppw), 7929738);
 }

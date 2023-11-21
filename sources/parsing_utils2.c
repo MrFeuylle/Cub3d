@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:04:04 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 12:23:06 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 07:43:25 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,27 @@ t_double	set_zero_double(void)
 	return (d);
 }
 
+void	do_wh_map(t_data *data)
+{
+	int	w;
+	int	h;
+	int	max;
+
+	max = 0;
+	h = 0;
+	while (data->map[h])
+	{
+		w = 0;
+		while (data->map[h][w])
+			w++;
+		if (w > max)
+			max = w;
+		h++;
+	}
+	data->w_map = max;
+	data->h_map = h;
+}
+
 bool	check_double(t_data *data)
 {
 	int			i;
@@ -71,23 +92,20 @@ bool	check_double(t_data *data)
 	return (error_double(d));
 }
 
-void	do_wh_map(t_data *data)
+char	**get_file(int fd, int nbl)
 {
-	int	w;
-	int	h;
-	int	max;
+	int		i;
+	char	**final;
 
-	max = 0;
-	h = 0;
-	while (data->map[h])
+	i = 0;
+	final = malloc(sizeof(char *) * (nbl + 1));
+	if (!final)
+		return (NULL);
+	final[i] = get_next_line(fd);
+	while (final[i])
 	{
-		w = 0;
-		while (data->map[h][w])
-			w++;
-		if (w > max)
-			max = w;
-		h++;
+		i++;
+		final[i] = get_next_line(fd);
 	}
-	data->w_map = max;
-	data->h_map = h;
+	return (final);
 }

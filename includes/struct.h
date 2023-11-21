@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 16:08:31 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 09:23:15 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ typedef struct s_double
 	int	ce;
 }	t_double;
 
+typedef struct s_mini
+{
+	int	cppw;
+	int	cpph;
+	int	x1;
+	int	y1;
+	int	x2;
+	int	y2;
+	int	dx;
+	int	dy;
+	int	sx;
+	int	sy;
+	int	err;
+	int	e2;
+}	t_mini;
 
 typedef struct s_texture {
 	void	*img;
@@ -53,7 +68,6 @@ typedef struct s_tex
 	t_rgb		*ce;
 }	t_tex;
 
-
 typedef struct s_player
 {
 	double		x;
@@ -74,6 +88,14 @@ typedef struct s_ray
 	double	deltadisty;
 	double	perpwalldist;
 	double	camerax;
+	double	fov;
+	double	rayangle;
+	double	texpos;
+	double	step;
+	double	wallx;
+	int		tex_offset;
+	int		texx;
+	int		texy;
 	int		lineheight;
 	int		mapx;
 	int		mapy;
@@ -94,20 +116,24 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-
-typedef	struct  s_line
+typedef struct s_line
 {
-	int  x; //the x coordinate of line relative to screen
-	int  y; //the current pixel index of the line (along y axis)
-	int  y0; //y start index of drawing texture
-	int  y1; //y end index of drawing texture
-	int  tex_x; //x coordinate of texture to draw
-	int  tex_y; //y coordinate of texture to draw
-} t_line;
+	int	x;
+	int	y;
+	int	y0;
+	int	y1;
+	int	tex_x;
+	int	tex_y;
+}	t_line;
 
 typedef struct s_data
 {
 	void		*mlx;
+	int			rl;
+	int			rr;
+	int			mb;
+	int			mf;
+	int			minimap;
 	t_img		*img;
 	t_tex		*tex;
 	t_player	*player;
@@ -120,6 +146,5 @@ typedef struct s_data
 	int			movespeed;
 	char		**file;
 }	t_data;
-
 
 #endif

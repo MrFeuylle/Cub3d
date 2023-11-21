@@ -6,29 +6,11 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 16:18:41 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 07:43:21 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-char	**get_file(int fd, int nbl)
-{
-	int		i;
-	char	**final;
-
-	i = 0;
-	final = malloc(sizeof(char *) * (nbl + 1));
-	if (!final)
-		return (NULL);
-	final[i] = get_next_line(fd);
-	while (final[i])
-	{
-		i++;
-		final[i] = get_next_line(fd);
-	}
-	return (final);
-}
 
 char	*get_path(char *str)
 {

@@ -1,7 +1,7 @@
-NO ./textures/Nord.xpm
-SO ./textures/Sud.xpm
-WE ./textures/Ouest.xpm
-EA ./textures/Est.xpm
+NO ./textures/jlarue.xpm
+SO ./textures/jlarue.xpm
+WE ./textures/jlarue.xpm
+EA ./textures/jlarue.xpm
 F 117,117,117
 C 0,28,255
 111111111111111111111111111111111

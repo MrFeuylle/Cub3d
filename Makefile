@@ -6,7 +6,7 @@
 #    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/20 11:03:08 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/21 07:44:58 by agiguair         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,10 @@ C_FILE			= main.c\
 				free.c\
 				player_init.c\
 				raycasting.c\
-				render.c
+				render.c\
+				raycasting_utils.c\
+				minimap.c\
+				eventmove.c
 #################################### Object ####################################
 OBJ_PATH		= .obj/
 OBJ				= $(SRC:.c=.o)

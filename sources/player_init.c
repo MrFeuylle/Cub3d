@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:48 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/20 22:15:41 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 08:06:36 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_player_direction(char dir, t_player *player)
 	if (dir == 'N')
 	{
 		player->dx = 0;
-		player->dy = 1;
+		player->dy = -1;
 	}
 	else if (dir == 'E')
 	{
@@ -27,7 +27,7 @@ void	init_player_direction(char dir, t_player *player)
 	else if (dir == 'S')
 	{
 		player->dx = 0;
-		player->dy = -1;
+		player->dy = 1;
 	}
 	else
 	{

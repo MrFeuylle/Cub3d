@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 17:49:48 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 09:09:48 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	parsing(t_data *data, char *str);
 bool	error_double(t_double d);
 bool	check_double(t_data *data);
 /*-----------event.c---------------*/
-int		handle_no_event(void *data);
+int		handle_no_event(t_data *data);
 int		handle_input(int keysym, t_data *data);
 int		cross_kill(t_data *data);
 /*--------------free.c-------------*/
@@ -64,9 +64,21 @@ void	init_player_position(t_player *player, char **map);
 void	raycasting(t_data *data);
 void	do_floor_cel(t_data *data);
 void	do_map(t_data *data);
+void	do_square(t_data *data, int cppw, int x, int y);
 void	do_wh_map(t_data *data);
 void	clear_map(t_data *data);
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
 void	raycast(t_data *data);
 int		rgb_to_int(t_rgb *rgb);
+int		key_press(int keysym, void *data);
+int		key_release(int keysym, void *data);
+void	draw_line(t_data *data, int x, int y1, int y2);
+void	draw_ray_on_minimap(t_data *data, double angle, int color);
+bool	check_double(t_data *data);
+char	**get_file(int fd, int nbl);
+void	move_player(t_data *data);
+void	view_player(t_data *data);
+void	clear_map(t_data *data);
+void	do_map(t_data *data);
+void	set_on_map_player(t_data *data, int cpph);
 #endif

@@ -6,45 +6,26 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 23:31:59 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/21 09:17:46 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	draw_line(t_data *data, int x, int y1, int y2)
-{
-	int			y;
-	t_rgb		rgb;
-	int			tex_y;
-	int			tex_offset;
-	t_texture	*texture;
-
-	y = y1;
-	texture = data->tex->so;
-	while (y <= y2)
-	{
-		tex_y = (y - y1) * texture->height / (y2 - y1 + 1);
-		tex_offset = tex_y * texture->line_length
-			+ x * (texture->bits_per_pixel / 8);
-		rgb.red = (unsigned char)texture->addr[tex_offset + 2];
-		rgb.green = (unsigned char)texture->addr[tex_offset + 1];
-		rgb.blue = (unsigned char)texture->addr[tex_offset];
-		my_mlx_pixel_put(data, x, y, rgb_to_int(&rgb));
-		y++;
-	}
-}
-
 void	set_value_for_x(t_data *data, int x)
 {
-	data->ray->fov = M_PI / 4;
+	data->ray->fov = M_PI / 2;
 	data->ray->camerax = 2 * x / (double)WIDTH - 1;
-	data->ray->raydiry = data->player->dy
-		* data->ray->camerax * sin(data->ray->fov / 2);
-	data->ray->raydirx = data->player->dx
-		* data->ray->camerax * sin(data->ray->fov / 2);
+	data->ray->rayangle = atan2(data->player->dy, data->player->dx)
+		+ atan((x - WIDTH / 2.0) / (0.5 * WIDTH / tan(data->ray->fov / 2.0)));
+	data->ray->raydiry = sin(data->ray->rayangle);
+	data->ray->raydirx = cos(data->ray->rayangle);
 	data->ray->deltadistx = fabs(1 / data->ray->raydirx);
 	data->ray->deltadisty = fabs(1 / data->ray->raydiry);
+	data->ray->deltadistx *= cos(data->ray->rayangle
+			- atan2(data->player->dy, data->player->dx));
+	data->ray->deltadisty *= cos(data->ray->rayangle
+			- atan2(data->player->dy, data->player->dx));
 	data->ray->hit = 0;
 	data->ray->mapx = (int)data->player->x;
 	data->ray->mapy = (int)data->player->y;
@@ -105,18 +86,14 @@ void	whithit(t_data *data, int x)
 		if (data->map[data->ray->mapy][data->ray->mapx] == '1')
 			data->ray->hit = 1;
 		if (data->ray->side == 0)
-			data->ray->perpwalldist = (data->ray->sidedistx
-					- data->ray->deltadistx * cos(data->ray->camerax - angle));
+			data->ray->perpwalldist = data->ray->sidedistx
+				- data->ray->deltadistx;
 		else
-			data->ray->perpwalldist = (data->ray->sidedisty
-					- data->ray->deltadisty * cos(data->ray->camerax - angle));
-		data->ray->lineheight = (int)(HEIGHT / data->ray->perpwalldist);
+			data->ray->perpwalldist = data->ray->sidedisty
+				- data->ray->deltadisty;
+		data->ray->lineheight = (int)((HEIGHT / 2) / data->ray->perpwalldist);
 		data->ray->drawstart = -data->ray->lineheight / 2 + HEIGHT / 2;
-		if (data->ray->drawstart < 0)
-			data->ray->drawstart = 0;
 		data->ray->drawend = data->ray->lineheight / 2 + HEIGHT / 2;
-		if (data->ray->drawend >= HEIGHT)
-			data->ray->drawend = HEIGHT - 1;
 		if (data->map[data->ray->mapy][data->ray->mapx] == '1')
 			draw_line(data, x, data->ray->drawstart,
 				data->ray->drawend);
@@ -125,7 +102,8 @@ void	whithit(t_data *data, int x)
 
 void	raycast(t_data *data)
 {
-	int	x;
+	int		x;
+	double	angle2;
 
 	x = 0;
 	while (x < WIDTH)
@@ -133,6 +111,11 @@ void	raycast(t_data *data)
 		set_value_for_x(data, x);
 		stepxstepy(data);
 		whithit(data, x);
+		angle2 = atan2(data->ray->raydiry, data->ray->raydirx);
+		if (data->minimap)
+			draw_ray_on_minimap(data, angle2, 0x9E9E9E);
 		x++;
 	}
+	if (data->minimap)
+		do_map(data);
 }
