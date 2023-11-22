@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 14:26:54 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:28:27 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,6 @@ void	set_on_map_player(t_data *data, int cpph);
 int		map_size_scale(char **map);
 void	rayinit_2(t_data	*data);
 int		mouse_hook(t_data *data);
+void	open_door(t_data *data);
+void	close_door(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:53:22 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/22 11:00:51 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:19:31 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	rayinit_2(t_data	*data)
 	data->mf = 0;
 	data->ml = 0;
 	data->mr = 0;
+	data->opdo = 0;
 	data->minimap = 0;
 }

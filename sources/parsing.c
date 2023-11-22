@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 07:43:21 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:57:32 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*get_path(char *str)
 		i++;
 	if (((str[i] == 'N' || str[i] == 'S') && str[i + 1] == 'O')
 		|| (str[i] == 'W' && str[i + 1] == 'E')
-		|| (str[i] == 'E' && str[i + 1] == 'A'))
+		|| (str[i] == 'E' && str[i + 1] == 'A')
+		|| (str[i] == 'D' && str[i + 1] == 'O'))
 	{
 		i += 2;
 		while ((str[i] == ' ' || str[i] == '	') && str[i])
@@ -66,6 +67,8 @@ int	check_tex(t_data *data, char *str, char *emp)
 		data->tex->we = img;
 	if (emp[0] == 'e')
 		data->tex->ea = img;
+	if (emp[0] == 'd')
+		data->tex->door = img;
 	return (0);
 }
 
@@ -84,6 +87,8 @@ bool	check_file(t_data *data)
 			check_tex(data, data->file[i], "we");
 		else if (ft_strcmp(data->file[i], "EA "))
 			check_tex(data, data->file[i], "ea");
+		else if (ft_strcmp(data->file[i], "DO "))
+			check_tex(data, data->file[i], "do");
 		else if (ft_strcmp(data->file[i], "F "))
 			check_fc(data, data->file[i]);
 		else if (ft_strcmp(data->file[i], "C "))
@@ -117,7 +122,10 @@ bool	parsing(t_data *data, char *str)
 	}
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
+	{
+		printf("ici\n");
 		return (printf("Error\n"), perror(str), TRUE);
+	}
 	data->file = get_file(fd, nbl);
 	if (check_double(data))
 		return (TRUE);

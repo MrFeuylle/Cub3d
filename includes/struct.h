@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 14:17:07 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:16:28 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_tex
 	t_texture	*so;
 	t_texture	*we;
 	t_texture	*ea;
+	t_texture	*door;
 	int			width;
 	int			height;
 	t_rgb		*fl;
@@ -132,6 +133,7 @@ typedef struct s_data
 	int			rl;
 	int			rr;
 	int			mb;
+	int			opdo;
 	int			mf;
 	int			ml;
 	int			mr;

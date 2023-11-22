@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 13:06:03 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:05:08 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	set_value_for_x(t_data *data, int x)
 {
-	data->ray->fov = M_PI / 4;
+	data->ray->fov = M_PI / 2;
 	data->ray->camerax = 2 * x / (double)WIDTH - 1;
 	data->ray->rayangle = atan2(data->player->dy, data->player->dx)
 		+ atan((x - WIDTH / 2.0) / (0.5 * WIDTH / tan(data->ray->fov / 2.0)));
@@ -85,6 +85,8 @@ void	whithit(t_data *data, int x)
 		angle = atan2(data->player->dy, data->player->dx);
 		if (data->map[data->ray->mapy][data->ray->mapx] == '1')
 			data->ray->hit = 1;
+		else if (data->map[data->ray->mapy][data->ray->mapx] == '2')
+			data->ray->hit = 2;
 		if (data->ray->side == 0)
 			data->ray->perpwalldist = data->ray->sidedistx
 				- data->ray->deltadistx;
@@ -94,7 +96,8 @@ void	whithit(t_data *data, int x)
 		data->ray->lineheight = (int)((HEIGHT / 2) / data->ray->perpwalldist);
 		data->ray->drawstart = -data->ray->lineheight / 2 + HEIGHT / 2;
 		data->ray->drawend = data->ray->lineheight / 2 + HEIGHT / 2;
-		if (data->map[data->ray->mapy][data->ray->mapx] == '1')
+		if (data->map[data->ray->mapy][data->ray->mapx] == '1'
+			|| data->map[data->ray->mapy][data->ray->mapx] == '2')
 			draw_line(data, x, data->ray->drawstart,
 				data->ray->drawend);
 	}

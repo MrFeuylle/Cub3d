@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:38:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 15:12:46 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:04:35 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_texture	*get_texture(t_data *data)
 {
+	if (data->ray->hit == 2)
+		return (data->tex->door);
 	if (data->ray->side)
 	{
 		if (data->ray->raydiry > 0)
@@ -49,6 +51,7 @@ void	set_ray_dl(t_data *data, t_texture *texture)
 	data->ray->texpos = (data->ray->drawstart - HEIGHT / 2
 			+ data->ray->lineheight / 2) * data->ray->step;
 }
+
 void	draw_line(t_data *data, int x, int y1, int y2)
 {
 	int			y;

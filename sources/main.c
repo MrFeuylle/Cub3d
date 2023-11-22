@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 14:58:15 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 16:44:03 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_data	*set_null_data(t_data *data)
 	data->tex->so = NULL;
 	data->tex->we = NULL;
 	data->tex->ea = NULL;
+	data->tex->door = NULL;
 	data->tex->fl->blue = 300;
 	data->tex->ce->blue = 300;
 	data->map = NULL;
