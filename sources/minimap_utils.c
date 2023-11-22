@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:19:42 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 11:47:43 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:06:19 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	map_size_scale(char **map)
 	int	max_j;
 	int	i;
 	int	j;
-
 
 	max_i = 0;
 	max_j = 0;

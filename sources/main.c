@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 16:44:03 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 17:07:30 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,31 +90,6 @@ void	lauch_mlx(t_data *data)
 	mlx_hook(data->win, 2, (1L << 0), &key_press, data);
 	mlx_hook(data->win, 3, (1L << 1), &key_release, data);
 	mlx_loop_hook(data->mlx, &handle_no_event, data);
-}
-
-void	rayinit(t_data	*data)
-{
-	data->ray->raydirx = 0;
-	data->ray->raydiry = 0;
-	data->ray->sidedistx = 0;
-	data->ray->sidedisty = 0;
-	data->ray->deltadistx = 0;
-	data->ray->deltadisty = 0;
-	data->ray->perpwalldist = 0;
-	data->ray->camerax = 0;
-	data->ray->lineheight = 0;
-	data->ray->mapx = 0;
-	data->ray->mapy = 0;
-	data->ray->drawstart = 0;
-	data->ray->drawend = 0;
-	data->ray->side = 0;
-	data->ray->stepx = 0;
-	data->ray->stepy = 0;
-	data->ray->hit = 0;
-	rayinit_2(data);
-	lauch_mlx(data);
-	do_floor_cel(data);
-	raycast(data);
 }
 
 int	main(int argc, char **argv)

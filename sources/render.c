@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:52:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:40:03 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:16:43 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,24 @@ void	do_square(t_data *data, int cppw, int x, int y)
 		while (j < cppw)
 		{
 			my_mlx_pixel_put(data, x + i, y + j, 16777215);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	do_square_door(t_data *data, int cppw, int x, int y)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < cppw)
+	{
+		j = 0;
+		while (j < cppw)
+		{
+			my_mlx_pixel_put(data, x + i, y + j, 167545);
 			j++;
 		}
 		i++;

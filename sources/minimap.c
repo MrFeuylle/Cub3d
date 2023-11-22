@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:49:39 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 10:22:05 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:17:31 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,11 @@ void	do_map(t_data *data)
 			if (data->map[i][j] == '1')
 			{
 				do_square(data, cpph, x, y);
+				draw_square_outline(data, cpph, x, y);
+			}
+			if (data->map[i][j] == '2' || data->map[i][j] == '3')
+			{
+				do_square_door(data, cpph, x, y);
 				draw_square_outline(data, cpph, x, y);
 			}
 			x += cpph;

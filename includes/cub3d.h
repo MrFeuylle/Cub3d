@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 16:28:27 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 17:16:55 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	raycasting(t_data *data);
 void	do_floor_cel(t_data *data);
 void	do_map(t_data *data);
 void	do_square(t_data *data, int cppw, int x, int y);
+void	do_square_door(t_data *data, int cppw, int x, int y);
 void	do_wh_map(t_data *data);
 void	clear_map(t_data *data);
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
@@ -76,15 +77,19 @@ void	draw_line(t_data *data, int x, int y1, int y2);
 void	draw_ray_on_minimap(t_data *data, double angle, int color);
 bool	check_double(t_data *data);
 char	**get_file(int fd, int nbl);
-void	move_player(t_data *data);
+void	move_playerf(t_data *data);
+void	move_playerb(t_data *data);
 void	move_playerlr(t_data *data);
 void	view_player(t_data *data);
 void	clear_map(t_data *data);
 void	do_map(t_data *data);
 void	set_on_map_player(t_data *data, int cpph);
 int		map_size_scale(char **map);
+void	rayinit(t_data	*data);
 void	rayinit_2(t_data	*data);
+void	lauch_mlx(t_data *data);
 int		mouse_hook(t_data *data);
 void	open_door(t_data *data);
 void	close_door(t_data *data);
+void	toogle_minimap(t_data *data);
 #endif

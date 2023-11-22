@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:48:37 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 16:33:21 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/22 17:10:06 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ int	handle_no_event(t_data *data)
 	mouse_hook(data);
 	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
 	if (data->opdo)
-	{
 		open_door(data);
-		//close_door(data);
-	}
 	if (data->rl == 1 || data->rr)
 		view_player(data);
 	if (data->mf == 1 || data->mb == 1)
-		move_player(data);
+		move_playerf(data);
 	if (data->ml == 1 || data->mr == 1)
 		move_playerlr(data);
 	clear_map(data);
@@ -36,6 +33,14 @@ int	handle_no_event(t_data *data)
 	return (0);
 }
 
+void	toogle_minimap(t_data *data)
+{
+	if (data->minimap)
+		data->minimap = 0;
+	else
+		data->minimap = 1;
+}
+
 int	key_press(int keysym, void *d)
 {
 	t_data	*data;
@@ -44,12 +49,7 @@ int	key_press(int keysym, void *d)
 	if (keysym == 32)
 		data->opdo = 0;
 	if (keysym == 109)
-	{
-		if (data->minimap)
-			data->minimap = 0;
-		else
-			data->minimap = 1;
-	}
+		toogle_minimap(data);
 	if (keysym == 65361)
 		data->rl = 1;
 	if (keysym == 65363)
