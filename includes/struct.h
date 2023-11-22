@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 12:04:14 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:17:07 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,12 @@ typedef struct s_data
 	int			rr;
 	int			mb;
 	int			mf;
+	int			ml;
+	int			mr;
+	int			yo;
+	int			xo;
+	int			mx;
+	int			my;
 	int			minimap;
 	t_img		*img;
 	t_tex		*tex;

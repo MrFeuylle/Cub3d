@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:03:10 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:58:15 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,29 @@ t_data	*set_null_data(t_data *data)
 	return (data);
 }
 
+int	mouse_hook(t_data *data)
+{
+	data->mx = 0;
+	data->my = 0;
+	mlx_mouse_get_pos(data->mlx, data->win, &data->mx, &data->my);
+	if (data->mx > data->xo)
+	{
+		data->rr = 1;
+		data->rl = 0;
+	}
+	if (data->mx < data->xo)
+	{
+		data->rl = 1;
+		data->rr = 0;
+	}
+	if (data->mx == data->xo)
+	{
+		data->rl = 0;
+		data->rr = 0;
+	}
+	return (0);
+}
+
 void	lauch_mlx(t_data *data)
 {
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Cub3D");
@@ -60,6 +83,8 @@ void	lauch_mlx(t_data *data)
 	data->img->addr = mlx_get_data_addr(data->img->img,
 			&data->img->bits_per_pixel,
 			&data->img->line_length, &data->img->endian);
+	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
+	mlx_mouse_get_pos(data->mlx, data->win, &data->xo, &data->yo);
 	mlx_hook(data->win, 17, (1L << 17), &cross_kill, data);
 	mlx_hook(data->win, 2, (1L << 0), &key_press, data);
 	mlx_hook(data->win, 3, (1L << 1), &key_release, data);
@@ -85,11 +110,7 @@ void	rayinit(t_data	*data)
 	data->ray->stepx = 0;
 	data->ray->stepy = 0;
 	data->ray->hit = 0;
-	data->rl = 0;
-	data->rr = 0;
-	data->mb = 0;
-	data->mf = 0;
-	data->minimap = 0;
+	rayinit_2(data);
 	lauch_mlx(data);
 	do_floor_cel(data);
 	raycast(data);

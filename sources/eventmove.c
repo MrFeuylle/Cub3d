@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eventmove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 07:44:22 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/21 09:02:53 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:04:05 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,27 @@ void	move_player(t_data *data)
 		if (data->map[(int)(data->player->y - data->player->dy * 0.1)]
 		[(int)(data->player->x)] != '1')
 			data->player->y -= data->player->dy * 0.1;
+	}
+}
+
+void	move_playerlr(t_data *data)
+{
+	double	new_x;
+	double	new_y;
+
+	if (data->mr)
+	{
+		new_x = data->player->x - data->player->dy * 0.1;
+		new_y = data->player->y + data->player->dx * 0.1;
+	}
+	if (data->ml)
+	{
+		new_x = data->player->x + data->player->dy * 0.1;
+		new_y = data->player->y - data->player->dx * 0.1;
+	}
+	if (data->map[(int)new_y][(int)new_x] != '1')
+	{
+		data->player->x = new_x;
+		data->player->y = new_y;
 	}
 }

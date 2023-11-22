@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
+#    By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/21 10:22:19 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/22 10:53:58 by jlarue           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ INC_DIR			= includes/
 SRC_DIR			= sources/
 SRC				= $(addprefix $(SRC_DIR), $(C_FILE))
 C_FILE			= main.c\
+				main_placeholder.c\
 				map_check01.c\
 				map_check02.c\
 				parsing.c\
