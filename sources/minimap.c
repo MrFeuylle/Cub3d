@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:49:39 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 17:17:31 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:38:56 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_ray_on_minimap(t_data *data, double angle, int color)
 	free(mini);
 }
 
-void	draw_square_outline(t_data *data, int cppw, int x, int y)
+int	draw_square_outline(t_data *data, int cppw, int x, int y)
 {
 	int	i;
 	int	j;
@@ -81,13 +81,12 @@ void	draw_square_outline(t_data *data, int cppw, int x, int y)
 		my_mlx_pixel_put(data, x + cppw - 1, y + j, 0);
 		j++;
 	}
+	return (1);
 }
 
-void	do_map(t_data *data)
+void	do_map(t_data *data, int x, int y)
 {
 	int	cpph;
-	int	x;
-	int	y;
 	int	i;
 	int	j;
 
@@ -101,15 +100,11 @@ void	do_map(t_data *data)
 		while (data->map[i][++j])
 		{
 			if (data->map[i][j] == '1')
-			{
-				do_square(data, cpph, x, y);
-				draw_square_outline(data, cpph, x, y);
-			}
+				(do_square(data, cpph, x, y)
+					&& draw_square_outline(data, cpph, x, y));
 			if (data->map[i][j] == '2' || data->map[i][j] == '3')
-			{
-				do_square_door(data, cpph, x, y);
-				draw_square_outline(data, cpph, x, y);
-			}
+				(do_square_door(data, cpph, x, y)
+					&& draw_square_outline(data, cpph, x, y));
 			x += cpph;
 		}
 		y += cpph;

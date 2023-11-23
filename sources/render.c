@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:52:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 17:16:43 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:45:54 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	my_mlx_pixel_put(t_data *data, double x, double y, int color)
-{
-	char	*dst;
-
-	if (x > WIDTH || x < 0 || y > HEIGHT || y < 0)
-		return ;
-	dst = data->img->addr + ((int)round(y) * data->img->line_length
-			+ (int)round(x) * (data->img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 int	rgb_to_int(t_rgb *rgb)
 {
@@ -49,7 +38,7 @@ void	do_floor_cel(t_data *data)
 	}
 }
 
-void	do_square(t_data *data, int cppw, int x, int y)
+int	do_square(t_data *data, int cppw, int x, int y)
 {
 	int	i;
 	int	j;
@@ -65,9 +54,10 @@ void	do_square(t_data *data, int cppw, int x, int y)
 		}
 		i++;
 	}
+	return (1);
 }
 
-void	do_square_door(t_data *data, int cppw, int x, int y)
+int	do_square_door(t_data *data, int cppw, int x, int y)
 {
 	int	i;
 	int	j;
@@ -83,6 +73,7 @@ void	do_square_door(t_data *data, int cppw, int x, int y)
 		}
 		i++;
 	}
+	return (1);
 }
 
 void	set_on_map_player(t_data *data, int cppw)

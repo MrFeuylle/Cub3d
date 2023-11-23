@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_placeholder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:53:22 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/22 17:12:31 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:34:53 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ void	rayinit(t_data	*data)
 	do_floor_cel(data);
 	raycast(data);
 }
-

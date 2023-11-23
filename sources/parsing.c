@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 15:57:32 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:45:09 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,8 @@ int	check_tex(t_data *data, char *str, char *emp)
 	return (0);
 }
 
-bool	check_file(t_data *data)
+bool	check_file(t_data *data, int i)
 {
-	int	i;
-
-	i = -1;
 	while (data->file[++i])
 	{
 		if (ft_strcmp(data->file[i], "NO "))
@@ -122,14 +119,11 @@ bool	parsing(t_data *data, char *str)
 	}
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-	{
-		printf("ici\n");
 		return (printf("Error\n"), perror(str), TRUE);
-	}
 	data->file = get_file(fd, nbl);
 	if (check_double(data))
 		return (TRUE);
-	if (check_file(data))
+	if (check_file(data, -1))
 		return (TRUE);
 	return (FALSE);
 }

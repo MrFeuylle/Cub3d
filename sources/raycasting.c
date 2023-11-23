@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 16:05:08 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:54:45 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ void	set_value_for_x(t_data *data, int x)
 	data->ray->raydirx = cos(data->ray->rayangle);
 	data->ray->deltadistx = fabs(1 / data->ray->raydirx);
 	data->ray->deltadisty = fabs(1 / data->ray->raydiry);
-	data->ray->deltadistx *= cos(data->ray->rayangle
-			- atan2(data->player->dy, data->player->dx));
-	data->ray->deltadisty *= cos(data->ray->rayangle
-			- atan2(data->player->dy, data->player->dx));
 	data->ray->hit = 0;
 	data->ray->mapx = (int)data->player->x;
 	data->ray->mapy = (int)data->player->y;
@@ -120,5 +116,5 @@ void	raycast(t_data *data)
 		x++;
 	}
 	if (data->minimap)
-		do_map(data);
+		do_map(data, 0, 0);
 }
