@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 07:44:22 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 17:06:57 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 14:22:05 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	move_playerf(t_data *data)
 	if (data->mf)
 	{
 		if (data->map[(int)(data->player->y)]
-		[(int)(data->player->x - data->player->dx * 0.1)] != '1' &&
+		[(int)(data->player->x - data->player->dx * 0.1)] == '0' ||
 		data->map[(int)(data->player->y)]
-		[(int)(data->player->x - data->player->dx * 0.1)] != '2')
+		[(int)(data->player->x - data->player->dx * 0.1)] == '6')
 			data->player->x -= data->player->dx * 0.1;
 		if (data->map[(int)(data->player->y - data->player->dy * 0.1)]
-		[(int)(data->player->x)] != '1' &&
+		[(int)(data->player->x)] == '0' ||
 		data->map[(int)(data->player->y - data->player->dy * 0.1)]
-		[(int)(data->player->x)] != '2')
+		[(int)(data->player->x)] == '6')
 			data->player->y -= data->player->dy * 0.1;
 	}
 	else
@@ -63,14 +63,14 @@ void	move_playerb(t_data *data)
 	if (data->mb)
 	{
 		if (data->map[(int)(data->player->y)]
-		[(int)(data->player->x + data->player->dx * 0.3)] != '1'
-			&& (data->map[(int)(data->player->y)]
-		[(int)(data->player->x + data->player->dx * 0.3)] != '2'))
+		[(int)(data->player->x + data->player->dx * 0.3)] == '0'
+			|| (data->map[(int)(data->player->y)]
+		[(int)(data->player->x + data->player->dx * 0.3)] == '6'))
 			data->player->x += data->player->dx * 0.1;
 		if (data->map[(int)(data->player->y + data->player->dy * 0.3)]
-		[(int)(data->player->x)] != '1'
-			&& data->map[(int)(data->player->y + data->player->dy * 0.3)]
-		[(int)(data->player->x)] != '2')
+		[(int)(data->player->x)] == '0'
+			|| data->map[(int)(data->player->y + data->player->dy * 0.3)]
+		[(int)(data->player->x)] == '6')
 			data->player->y += data->player->dy * 0.1;
 	}
 }

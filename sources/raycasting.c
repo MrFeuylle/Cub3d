@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 12:07:58 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:54:12 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,24 @@ void	whithit(t_data *data, int x)
 			data->ray->hit = 1;
 		else if (data->map[data->ray->mapy][data->ray->mapx] == '2')
 			data->ray->hit = 2;
+		else if (data->map[data->ray->mapy][data->ray->mapx] == '3')
+			data->ray->hit = 3;
+		else if (data->map[data->ray->mapy][data->ray->mapx] == '4')
+			data->ray->hit = 4;
+		else if (data->map[data->ray->mapy][data->ray->mapx] == '5')
+			data->ray->hit = 5;
 		if (data->ray->side == 0)
 			data->ray->perpwalldist = data->ray->sidedistx
 				- data->ray->deltadistx;
 		else
 			data->ray->perpwalldist = data->ray->sidedisty
 				- data->ray->deltadisty;
-		data->ray->lineheight = (int)((HEIGHT / 2) / data->ray->perpwalldist);
+		data->ray->lineheight = (int)((HEIGHT / 2)
+				/ cos(data->ray->rayangle - angle) / data->ray->perpwalldist);
 		data->ray->drawstart = -data->ray->lineheight / 2 + HEIGHT / 2;
 		data->ray->drawend = data->ray->lineheight / 2 + HEIGHT / 2;
-		if (data->map[data->ray->mapy][data->ray->mapx] == '1'
-			|| data->map[data->ray->mapy][data->ray->mapx] == '2')
+		if (data->map[data->ray->mapy][data->ray->mapx] >= '1'
+			&& data->map[data->ray->mapy][data->ray->mapx] <= '5')
 			draw_line(data, x, data->ray->drawstart,
 				data->ray->drawend);
 	}

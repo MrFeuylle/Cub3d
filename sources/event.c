@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:48:37 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 17:10:06 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 15:27:54 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ int	handle_no_event(t_data *data)
 		move_playerf(data);
 	if (data->ml == 1 || data->mr == 1)
 		move_playerlr(data);
+	if (data->op == 3)
+	{
+		openingdoor(data);
+		data->op = 0;
+	}
+	else
+		data->op++;
 	clear_map(data);
 	do_floor_cel(data);
 	raycast(data);

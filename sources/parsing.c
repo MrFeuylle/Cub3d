@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 11:45:09 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:44:48 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ char	*get_path(char *str)
 	if (((str[i] == 'N' || str[i] == 'S') && str[i + 1] == 'O')
 		|| (str[i] == 'W' && str[i + 1] == 'E')
 		|| (str[i] == 'E' && str[i + 1] == 'A')
-		|| (str[i] == 'D' && str[i + 1] == 'O'))
+		|| (str[i] == 'D' && str[i + 1] == 'O')
+		|| (str[i] == 'D' && str[i + 1] == '1')
+		|| (str[i] == 'D' && str[i + 1] == '2')
+		|| (str[i] == 'D' && str[i + 1] == '3'))
 	{
 		i += 2;
 		while ((str[i] == ' ' || str[i] == '	') && str[i])
@@ -59,6 +62,7 @@ int	check_tex(t_data *data, char *str, char *emp)
 	free(path);
 	if (!img)
 		return (printf("Error\nCan't open the xpm at line %s", str));
+	printf("%s\n", emp);
 	if (emp[0] == 'n')
 		data->tex->no = img;
 	if (emp[0] == 's')
@@ -67,8 +71,14 @@ int	check_tex(t_data *data, char *str, char *emp)
 		data->tex->we = img;
 	if (emp[0] == 'e')
 		data->tex->ea = img;
-	if (emp[0] == 'd')
+	if (emp[0] == 'd' && emp[1] == 'o')
 		data->tex->door = img;
+	if (emp[0] == 'd' && emp[1] == '1')
+		data->tex->door1 = img;
+	if (emp[0] == 'd' && emp[1] == '2')
+		data->tex->door2 = img;
+	if (emp[0] == 'd' && emp[1] == '3')
+		data->tex->door3 = img;
 	return (0);
 }
 
@@ -86,6 +96,12 @@ bool	check_file(t_data *data, int i)
 			check_tex(data, data->file[i], "ea");
 		else if (ft_strcmp(data->file[i], "DO "))
 			check_tex(data, data->file[i], "do");
+		else if (ft_strcmp(data->file[i], "D1 "))
+			check_tex(data, data->file[i], "d1");
+		else if (ft_strcmp(data->file[i], "D2 "))
+			check_tex(data, data->file[i], "d2");
+		else if (ft_strcmp(data->file[i], "D3 "))
+			check_tex(data, data->file[i], "d3");
 		else if (ft_strcmp(data->file[i], "F "))
 			check_fc(data, data->file[i]);
 		else if (ft_strcmp(data->file[i], "C "))

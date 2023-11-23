@@ -6,7 +6,7 @@
 /*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:38:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 17:04:52 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 13:53:14 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ t_texture	*get_texture(t_data *data)
 {
 	if (data->ray->hit == 2)
 		return (data->tex->door);
+	if (data->ray->hit == 3)
+		return (data->tex->door1);
+	if (data->ray->hit == 4)
+		return (data->tex->door2);
+	if (data->ray->hit == 5)
+		return (data->tex->door3);
 	if (data->ray->side)
 	{
 		if (data->ray->raydiry > 0)

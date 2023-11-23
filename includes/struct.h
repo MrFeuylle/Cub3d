@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 11:17:24 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:13:32 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_tex
 	t_texture	*we;
 	t_texture	*ea;
 	t_texture	*door;
+	t_texture	*door1;
+	t_texture	*door2;
+	t_texture	*door3;
 	int			width;
 	int			height;
 	t_rgb		*fl;
@@ -140,6 +143,7 @@ typedef struct s_data
 	int			mr;
 	int			yo;
 	int			xo;
+	int			op;
 	int			mx;
 	int			my;
 	int			minimap;

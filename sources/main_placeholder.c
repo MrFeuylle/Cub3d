@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_placeholder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 10:53:22 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/23 11:34:53 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:13:47 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	rayinit_2(t_data	*data)
 	data->ml = 0;
 	data->mr = 0;
 	data->opdo = 0;
+	data->op = 0;
 	data->minimap = 0;
 }
 

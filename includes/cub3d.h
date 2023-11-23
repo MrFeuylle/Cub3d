@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 11:45:28 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/23 14:59:30 by jlarue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,6 @@ int		mouse_hook(t_data *data);
 void	open_door(t_data *data);
 void	close_door(t_data *data);
 void	toogle_minimap(t_data *data);
+void	openingdoor(t_data *data);
+void	closingdoor(t_data *data);
 #endif
