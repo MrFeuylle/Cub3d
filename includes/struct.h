@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:36 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 16:16:28 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:17:24 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_mini
 
 typedef struct s_texture {
 	void	*img;
+	int		**tab;
 	char	*addr;
 	int		width;
 	int		height;
@@ -95,7 +96,7 @@ typedef struct s_ray
 	double	step;
 	double	wallx;
 	int		tex_offset;
-	double	texx;
+	int		texx;
 	int		texy;
 	int		lineheight;
 	int		mapx;

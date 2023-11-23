@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+         #
+#    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/22 16:58:57 by jlarue           ###   ########.fr        #
+#    Updated: 2023/11/23 11:46:33 by agiguair         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ C_FILE			= main.c\
 				minimap.c\
 				eventmove.c\
 				minimap_utils.c\
-				door.c
+				door.c\
+				my_mlx_pixel_put.c
 #################################### Object ####################################
 OBJ_PATH		= .obj/
 OBJ				= $(SRC:.c=.o)

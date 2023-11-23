@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/22 17:16:55 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/23 11:45:28 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	ft_strcmp(char *str, char *str2);
 char	**get_file(int fd, int nbl);
 char	*get_path(char *str);
 int		check_tex(t_data *data, char *str, char *emp);
-bool	check_file(t_data *data);
+bool	check_file(t_data *data, int i);
 bool	parsing(t_data *data, char *str);
 /*----------parsing_utils2.c--------*/
 bool	error_double(t_double d);
@@ -63,9 +63,8 @@ void	free_all(t_data *data);
 void	init_player_position(t_player *player, char **map);
 void	raycasting(t_data *data);
 void	do_floor_cel(t_data *data);
-void	do_map(t_data *data);
-void	do_square(t_data *data, int cppw, int x, int y);
-void	do_square_door(t_data *data, int cppw, int x, int y);
+int		do_square(t_data *data, int cppw, int x, int y);
+int		do_square_door(t_data *data, int cppw, int x, int y);
 void	do_wh_map(t_data *data);
 void	clear_map(t_data *data);
 void	my_mlx_pixel_put(t_data *data, double x, double y, int color);
@@ -82,7 +81,7 @@ void	move_playerb(t_data *data);
 void	move_playerlr(t_data *data);
 void	view_player(t_data *data);
 void	clear_map(t_data *data);
-void	do_map(t_data *data);
+void	do_map(t_data *data, int x, int y);
 void	set_on_map_player(t_data *data, int cpph);
 int		map_size_scale(char **map);
 void	rayinit(t_data	*data);
