@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 06:38:18 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 13:53:14 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/28 16:14:05 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ t_texture	*get_texture(t_data *data)
 {
 	if (data->ray->hit == 2)
 		return (data->tex->door);
-	if (data->ray->hit == 3)
+	if (data->ray->hit == 3 || data->ray->hit == 9)
 		return (data->tex->door1);
-	if (data->ray->hit == 4)
+	if (data->ray->hit == 4 || data->ray->hit == 8)
 		return (data->tex->door2);
-	if (data->ray->hit == 5)
+	if (data->ray->hit == 5 || data->ray->hit == 7)
 		return (data->tex->door3);
 	if (data->ray->side)
 	{

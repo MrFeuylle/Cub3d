@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:56:21 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:25:56 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	whithit(t_data *data, int x)
 		data->ray->drawstart = -data->ray->lineheight / 2 + HEIGHT / 2;
 		data->ray->drawend = data->ray->lineheight / 2 + HEIGHT / 2;
 		if (data->map[data->ray->mapy][data->ray->mapx] >= '1'
-			&& data->map[data->ray->mapy][data->ray->mapx] <= '5')
+			&& data->map[data->ray->mapy][data->ray->mapx] <= '9'
+			&& data->map[data->ray->mapy][data->ray->mapx] != '6')
 			draw_line(data, x, data->ray->drawstart,
 				data->ray->drawend);
 	}
