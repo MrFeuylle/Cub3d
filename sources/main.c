@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 14:25:25 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:24:54 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ void	lauch_mlx(t_data *data)
 	data->img->addr = mlx_get_data_addr(data->img->img,
 			&data->img->bits_per_pixel,
 			&data->img->line_length, &data->img->endian);
-	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
-	mlx_mouse_get_pos(data->mlx, data->win, &data->xo, &data->yo);
 	mlx_hook(data->win, 17, (1L << 17), &cross_kill, data);
 	mlx_hook(data->win, 2, (1L << 0), &key_press, data);
 	mlx_hook(data->win, 3, (1L << 1), &key_release, data);

@@ -6,11 +6,12 @@
 #    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/23 11:46:33 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/28 15:55:40 by agiguair         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= Cub3D
+NAME_BONUS		= Cub3D_Bonus
 CC				= cc
 FLAG			= -Wall -Wextra -Werror -g3
 
@@ -29,6 +30,7 @@ INC_DIR			= includes/
 #################################### Source ####################################
 SRC_DIR			= sources/
 SRC				= $(addprefix $(SRC_DIR), $(C_FILE))
+SRC_BONUS		= $(addprefix $(SRC_DIR), $(C_FILE_BONUS))
 C_FILE			= main.c\
 				main_placeholder.c\
 				map_check01.c\
@@ -45,12 +47,33 @@ C_FILE			= main.c\
 				minimap.c\
 				eventmove.c\
 				minimap_utils.c\
+				my_mlx_pixel_put.c
+C_FILE_BONUS	= main.c\
+				main_placeholder.c\
+				map_check01.c\
+				map_check02_bonus.c\
+				parsing_bonus.c\
+				parsing_bonus2.c\
+				parsing_utils.c\
+				parsing_utils2.c\
+				event_bonus.c\
+				free_bonus.c\
+				player_init.c\
+				raycasting_bonus.c\
+				raycasting_bonus2.c\
+				render.c\
+				raycasting_utils.c\
+				minimap.c\
+				eventmove.c\
+				minimap_utils.c\
 				door.c\
 				my_mlx_pixel_put.c
 #################################### Object ####################################
 OBJ_PATH		= .obj/
 OBJ				= $(SRC:.c=.o)
 OBJ_DIR			= $(addprefix $(OBJ_PATH), $(OBJ))
+OBJ_BONUS		= $(SRC_BONUS:.c=.o)
+OBJ_DIR_BONUS	= $(addprefix $(OBJ_PATH), $(OBJ_BONUS))
 
 #################################### Rules #####################################
 all: lib mlx $(NAME)
@@ -68,6 +91,9 @@ $(OBJ_PATH):
 
 lib:
 	@make -C $(LIBFT_PATH)
+
+bonus: lib mlx $(OBJ_PATH) $(OBJ_DIR_BONUS)
+	$(CC) $(FLAG) $(OBJ_DIR_BONUS) $(LIBFT_LIB) $(MLX_EX) -lm -o $(NAME_BONUS)
 
 mlx:
 	@make -C $(MLX_PATH)

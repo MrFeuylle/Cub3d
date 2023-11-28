@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:19:29 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:51:42 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ char	*get_path(char *str)
 		i++;
 	if (((str[i] == 'N' || str[i] == 'S') && str[i + 1] == 'O')
 		|| (str[i] == 'W' && str[i + 1] == 'E')
-		|| (str[i] == 'E' && str[i + 1] == 'A'))
+		|| (str[i] == 'E' && str[i + 1] == 'A')
+		|| (str[i] == 'D' && str[i + 1] == 'O')
+		|| (str[i] == 'D' && str[i + 1] == '1')
+		|| (str[i] == 'D' && str[i + 1] == '2')
+		|| (str[i] == 'D' && str[i + 1] == '3'))
 	{
 		i += 2;
 		while ((str[i] == ' ' || str[i] == '	') && str[i])
@@ -45,6 +49,26 @@ t_texture	*do_img(t_data *data, char *path)
 	return (tex);
 }
 
+void	set_tex(t_data *data, t_texture *img, char *emp)
+{
+	if (emp[0] == 'n')
+		data->tex->no = img;
+	if (emp[0] == 's')
+		data->tex->so = img;
+	if (emp[0] == 'w')
+		data->tex->we = img;
+	if (emp[0] == 'e')
+		data->tex->ea = img;
+	if (emp[0] == 'd' && emp[1] == 'o')
+		data->tex->door = img;
+	if (emp[0] == 'd' && emp[1] == '1')
+		data->tex->door1 = img;
+	if (emp[0] == 'd' && emp[1] == '2')
+		data->tex->door2 = img;
+	if (emp[0] == 'd' && emp[1] == '3')
+		data->tex->door3 = img;
+}
+
 int	check_tex(t_data *data, char *str, char *emp)
 {
 	t_texture	*img;
@@ -58,41 +82,8 @@ int	check_tex(t_data *data, char *str, char *emp)
 	free(path);
 	if (!img)
 		return (printf("Error\nCan't open the xpm at line %s", str));
-	if (emp[0] == 'n')
-		data->tex->no = img;
-	if (emp[0] == 's')
-		data->tex->so = img;
-	if (emp[0] == 'w')
-		data->tex->we = img;
-	if (emp[0] == 'e')
-		data->tex->ea = img;
+	set_tex(data, img, emp);
 	return (0);
-}
-
-bool	check_file(t_data *data, int i)
-{
-	while (data->file[++i])
-	{
-		if (ft_strcmp(data->file[i], "NO "))
-			check_tex(data, data->file[i], "no");
-		else if (ft_strcmp(data->file[i], "SO "))
-			check_tex(data, data->file[i], "so");
-		else if (ft_strcmp(data->file[i], "WE "))
-			check_tex(data, data->file[i], "we");
-		else if (ft_strcmp(data->file[i], "EA "))
-			check_tex(data, data->file[i], "ea");
-		else if (ft_strcmp(data->file[i], "F "))
-			check_fc(data, data->file[i]);
-		else if (ft_strcmp(data->file[i], "C "))
-			check_fc(data, data->file[i]);
-		else if (check_map(data->file[i]))
-		{
-			if (!map_error_controler(&data->file[i], data))
-				data->map = &data->file[i];
-			break ;
-		}
-	}
-	return (check_all(data));
 }
 
 bool	parsing(t_data *data, char *str)

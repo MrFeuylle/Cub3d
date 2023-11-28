@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 06:43:30 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:13:27 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:56:21 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	whithit(t_data *data, int x)
 	{
 		stepin(data);
 		angle = atan2(data->player->dy, data->player->dx);
-		if (data->map[data->ray->mapy][data->ray->mapx] == '1')
-			data->ray->hit = 1;
+		if (data->map[data->ray->mapy][data->ray->mapx] != '0')
+			check_hit(data);
 		if (data->ray->side == 0)
 			data->ray->perpwalldist = data->ray->sidedistx
 				- data->ray->deltadistx;
@@ -91,7 +91,8 @@ void	whithit(t_data *data, int x)
 				/ cos(data->ray->rayangle - angle) / data->ray->perpwalldist);
 		data->ray->drawstart = -data->ray->lineheight / 2 + HEIGHT / 2;
 		data->ray->drawend = data->ray->lineheight / 2 + HEIGHT / 2;
-		if (data->map[data->ray->mapy][data->ray->mapx] == '1')
+		if (data->map[data->ray->mapy][data->ray->mapx] >= '1'
+			&& data->map[data->ray->mapy][data->ray->mapx] <= '5')
 			draw_line(data, x, data->ray->drawstart,
 				data->ray->drawend);
 	}

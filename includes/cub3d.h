@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 14:59:30 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/28 15:55:21 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,5 @@ void	close_door(t_data *data);
 void	toogle_minimap(t_data *data);
 void	openingdoor(t_data *data);
 void	closingdoor(t_data *data);
+void	check_hit(t_data *data);
 #endif

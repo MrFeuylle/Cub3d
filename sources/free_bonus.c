@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:43 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:52:53 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:37:13 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ void	mlx_free(t_data *data)
 	mlx_destroy_display(data->mlx);
 }
 
+void	free_tex(t_data *data)
+{
+	free(data->tex->door);
+	free(data->tex->door1);
+	free(data->tex->door2);
+	free(data->tex->door3);
+	free(data->tex->no);
+	free(data->tex->ea);
+	free(data->tex->we);
+	free(data->tex->so);
+	free(data->tex);
+}
+
 void	free_all(t_data *data)
 {
 	int	i;
@@ -43,11 +56,7 @@ void	free_all(t_data *data)
 	free(data->tex->ce);
 	free(data->tex->fl);
 	mlx_free(data);
-	free(data->tex->no);
-	free(data->tex->ea);
-	free(data->tex->we);
-	free(data->tex->so);
-	free(data->tex);
+	free_tex(data);
 	free(data->player);
 	free(data->ray);
 	free(data->img);
