@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:55:21 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:39:59 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,5 @@ void	toogle_minimap(t_data *data);
 void	openingdoor(t_data *data);
 void	closingdoor(t_data *data);
 void	check_hit(t_data *data);
+t_data	*set_null_data(t_data *data);
 #endif

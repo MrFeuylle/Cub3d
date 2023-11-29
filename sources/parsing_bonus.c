@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:51:42 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:14:46 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_texture	*do_img(t_data *data, char *path)
 	tex->img = mlx_xpm_file_to_image(data->mlx,
 			path, &tex->width, &tex->height);
 	if (!tex->img)
-		return (NULL);
+		return (free(tex), NULL);
 	tex->addr = mlx_get_data_addr(tex->img,
 			&tex->bits_per_pixel, &tex->line_length, &tex->endian);
 	return (tex);

@@ -2,6 +2,10 @@ NO ./textures/Nord.xpm
 SO ./textures/Sud.xpm
 WE ./textures/Ouest.xpm
 EA ./textures/Est.xpm
+DO ./textures/door0.xpm
+D1 ./textures/door1.xpm
+D2 ./textures/door2.xpm
+D3 ./textures/door3.xpm
 F 117,117,117
 C 0,28,255
 11111

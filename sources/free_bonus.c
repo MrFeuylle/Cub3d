@@ -6,21 +6,28 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:43 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:37:13 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:00:56 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+void	ffree(void *p)
+{
+	if (p)
+		free(p);
+	p = NULL;
+}
+
 void	mlx_free(t_data *data)
 {
-	if (data->tex->no->img)
+	if (data->tex->no && data->tex->no->img)
 		mlx_destroy_image(data->mlx, data->tex->no->img);
-	if (data->tex->so->img)
+	if (data->tex->so && data->tex->so->img)
 		mlx_destroy_image(data->mlx, data->tex->so->img);
-	if (data->tex->ea->img)
+	if (data->tex->ea && data->tex->ea->img)
 		mlx_destroy_image(data->mlx, data->tex->ea->img);
-	if (data->tex->we->img)
+	if (data->tex->we && data->tex->we->img)
 		mlx_destroy_image(data->mlx, data->tex->we->img);
 	if (data->tex->door && data->tex->door->img)
 		mlx_destroy_image(data->mlx, data->tex->door->img);
@@ -30,22 +37,27 @@ void	mlx_free(t_data *data)
 		mlx_destroy_image(data->mlx, data->tex->door2->img);
 	if (data->tex->door3 && data->tex->door3->img)
 		mlx_destroy_image(data->mlx, data->tex->door3->img);
-	mlx_destroy_image(data->mlx, data->img->img);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
+	if (data->img && data->img->img)
+		mlx_destroy_image(data->mlx, data->img->img);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
 }
 
 void	free_tex(t_data *data)
 {
-	free(data->tex->door);
-	free(data->tex->door1);
-	free(data->tex->door2);
-	free(data->tex->door3);
-	free(data->tex->no);
-	free(data->tex->ea);
-	free(data->tex->we);
-	free(data->tex->so);
-	free(data->tex);
+	ffree(data->tex->door);
+	ffree(data->tex->door1);
+	ffree(data->tex->door2);
+	ffree(data->tex->door3);
+	ffree(data->tex->fl);
+	ffree(data->tex->ce);
+	ffree(data->tex->no);
+	ffree(data->tex->ea);
+	ffree(data->tex->we);
+	ffree(data->tex->so);
+	ffree(data->tex);
 }
 
 void	free_all(t_data *data)
@@ -53,20 +65,18 @@ void	free_all(t_data *data)
 	int	i;
 
 	i = 0;
-	free(data->tex->ce);
-	free(data->tex->fl);
 	mlx_free(data);
 	free_tex(data);
-	free(data->player);
-	free(data->ray);
-	free(data->img);
+	ffree(data->player);
+	ffree(data->ray);
+	ffree(data->img);
 	while (data->file[i])
 	{
-		free(data->file[i]);
+		ffree(data->file[i]);
 		i++;
 	}
-	free(data->file);
-	free(data->mlx);
-	free(data);
+	ffree(data->file);
+	ffree(data->mlx);
+	ffree(data);
 	exit (0);
 }

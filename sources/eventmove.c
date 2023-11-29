@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   eventmove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 07:44:22 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/23 14:22:05 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/11/29 14:58:09 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,14 @@ void	move_playerlr(t_data *data)
 		new_x = data->player->x + data->player->dy * 0.1;
 		new_y = data->player->y - data->player->dx * 0.1;
 	}
-	if (data->map[(int)new_y][(int)new_x] != '1')
+	if (data->map[(int)new_y][(int)new_x] != '1'
+		&& data->map[(int)new_y][(int)new_x] != '2'
+		&& data->map[(int)new_y][(int)new_x] != '3'
+		&& data->map[(int)new_y][(int)new_x] != '4'
+		&& data->map[(int)new_y][(int)new_x] != '5'
+		&& data->map[(int)new_y][(int)new_x] != '7'
+		&& data->map[(int)new_y][(int)new_x] != '8'
+		&& data->map[(int)new_y][(int)new_x] != '9')
 	{
 		data->player->x = new_x;
 		data->player->y = new_y;

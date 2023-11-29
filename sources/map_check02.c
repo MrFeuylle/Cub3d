@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:16:17 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/28 15:41:47 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:54:25 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_next_char_line(char **map, int i, int j)
 {
-	if (!map[i][j + 1] || map[i][j + 1] == '\n')
+	if (!map[i][j + 1] || (map[i][j] == '1' && map[i][j + 1] == '\n'))
 		return (FALSE);
 	else if ((map[i][j] == ' ' || map[i][j] == '	') &&
 			map[i][j + 1] != ' ' && map[i][j + 1] != '	' &&

@@ -6,7 +6,7 @@
 #    By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 08:56:02 by agiguair          #+#    #+#              #
-#    Updated: 2023/11/28 15:55:40 by agiguair         ###   ########.fr        #
+#    Updated: 2023/11/29 13:21:21 by agiguair         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ clean:
 	rm -fr $(OBJ_PATH)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 	make fclean -C $(LIBFT_PATH)
 
 re: fclean all
