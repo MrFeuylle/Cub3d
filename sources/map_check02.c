@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:16:17 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/29 14:54:25 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:46:13 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	check_prev_char_line(char **map, int i, int j)
 
 bool	check_next_char_col(char **map, int i, int j)
 {
-	if (!map[i + 1][0] || !map[i + 1][j])
+	if (!map[i + 1] || !map[i + 1][j])
 		return (FALSE);
 	else if ((map[i][j] == ' ' || map[i][j] == '	') && map[i + 1][j] == '0')
 		return (printf("Error\nCol %d line %d\n", j, i), TRUE);
