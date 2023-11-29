@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:24:54 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:34:07 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 	data = set_null_data(data);
 	data->mlx = mlx_init();
 	if (parsing(data, argv[1]))
-		return (1);
+		return (free_all(data), 1);
 	rayinit(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);
 	mlx_loop(data->mlx);

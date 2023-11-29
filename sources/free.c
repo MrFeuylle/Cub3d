@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:43 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:52:53 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:38:09 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,36 @@ void	mlx_free(t_data *data)
 		mlx_destroy_image(data->mlx, data->tex->door2->img);
 	if (data->tex->door3 && data->tex->door3->img)
 		mlx_destroy_image(data->mlx, data->tex->door3->img);
-	mlx_destroy_image(data->mlx, data->img->img);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
+	if (data->img->img)
+		mlx_destroy_image(data->mlx, data->img->img);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+}
+
+void	free_all2(t_data *data)
+{
+	if (data->tex->fl)
+		free(data->tex->fl);
+	if (data->tex->ce)
+		free(data->tex->ce);
+	if (data->tex->no)
+		free(data->tex->no);
+	if (data->tex->ea)
+		free(data->tex->ea);
+	if (data->tex->we)
+		free(data->tex->we);
+	if (data->tex->so)
+		free(data->tex->so);
+	if (data->tex)
+		free(data->tex);
+	if (data->player)
+		free(data->player);
+	if (data->ray)
+		free(data->ray);
+	if (data->img)
+		free(data->img);
 }
 
 void	free_all(t_data *data)
@@ -40,24 +67,18 @@ void	free_all(t_data *data)
 	int	i;
 
 	i = 0;
-	free(data->tex->ce);
-	free(data->tex->fl);
 	mlx_free(data);
-	free(data->tex->no);
-	free(data->tex->ea);
-	free(data->tex->we);
-	free(data->tex->so);
-	free(data->tex);
-	free(data->player);
-	free(data->ray);
-	free(data->img);
+	free_all2(data);
 	while (data->file[i])
 	{
 		free(data->file[i]);
 		i++;
 	}
-	free(data->file);
-	free(data->mlx);
-	free(data);
+	if (data->file)
+		free(data->file);
+	if (data->mlx)
+		free(data->mlx);
+	if (data)
+		free(data);
 	exit (0);
 }
