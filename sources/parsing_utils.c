@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:35:59 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/20 22:16:44 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:17:55 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,38 @@ bool	check_rgb(t_rgb *rgb)
 	return (FALSE);
 }
 
-bool	check_map(char *str)
+bool	check_map(char **str, t_data *data)
 {
 	char	*str2;
+	int		i;
+	int		j;
 
-	str2 = ft_strtrim(str, " 	\n");
-	if (str2)
-		if (ft_strlen(str2))
-			return (free(str2), TRUE);
+	i = -1;
+	str2 = ft_strtrim(str[0], " 	\n");
+	if (str2 && ft_strlen(str2))
+	{
+		while (str[++i])
+		{
+			j = -1;
+			while (str[i][++j])
+			{
+				if (str[i][j] == 'N' || str[i][j] == 'S'
+					|| str[i][j] == 'W' || str[i][j] == 'E'
+						|| ft_isdigit(str[i][j]))
+					break ;
+			}
+			if (!str[i][j] && data->cm++)
+				return (free(str2), FALSE);
+		}
+		return (free(str2), TRUE);
+	}
 	return (free(str2), FALSE);
 }
 
 bool	check_all(t_data *data)
 {
+	if (data->cm)
+		return (printf("Error\nMap should be last arg of the file\n"), TRUE);
 	if (!data->tex->no)
 		return (printf("Error\nNo texture for North\n"), TRUE);
 	if (!data->tex->so)

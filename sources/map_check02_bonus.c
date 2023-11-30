@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 19:16:17 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/29 14:56:04 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:53:34 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ bool	check_next_char_line(char **map, int i, int j)
 	else if ((map[i][j] == ' ' || map[i][j] == '	') &&
 			map[i][j + 1] != ' ' && map[i][j + 1] != '	' &&
 			map[i][j + 1] != '1')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else if (map[i][j] == '1' && map[i][j + 1] != ' '
 		&& map[i][j + 1] != '	' && map[i][j + 1] != '1'
 		&& map[i][j + 1] != 'N' && map[i][j + 1] != 'E' && map[i][j + 1] != 'S'
 		&& map[i][j + 1] != 'W' && map[i][j + 1] != '0' && map[i][j + 1] != '2')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else if ((map[i][j] == '0' || map[i][j] == '2') && map[i][j + 1] != '1'
 		&& map[i][j + 1] != 'N' && map[i][j + 1] != 'E' && map[i][j + 1] != 'S'
 		&& map[i][j + 1] != 'W' && map[i][j + 1] != '0' && map[i][j + 1] != '2')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else if ((map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S' ||
 		map[i][j + 1] == 'W') && map[i][j + 1] != '0'
 		&& map[i][j + 1] != '2' && map[i][j + 1] != '1')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else
 		return (FALSE);
 }
@@ -44,20 +44,20 @@ bool	check_prev_char_line(char **map, int i, int j)
 	else if ((map[i][j] == ' ' || map[i][j] == '	')
 			&& map[i][j - 1] != ' '
 			&& map[i][j - 1] != '	' && map[i][j - 1] != '1')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else if (map[i][j] == '1' && map[i][j - 1] != ' '
 		&& map[i][j - 1] != '	' && map[i][j - 1] != '1'
 		&& map[i][j - 1] != 'N' && map[i][j - 1] != 'E' && map[i][j - 1] != 'S'
 		&& map[i][j - 1] != 'W' && map[i][j - 1] != '0' && map[i][j - 1] != '2')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else if ((map[i][j] == '0' || map[i][j] == '2') && map[i][j - 1] != '1'
 		&& map[i][j - 1] != 'N' && map[i][j - 1] != 'E' && map[i][j - 1] != 'S'
 		&& map[i][j - 1] != 'W' && map[i][j - 1] != '0' && map[i][j - 1] != '2')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else if ((map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S' ||
 		map[i][j - 1] == 'W') && map[i][j - 1] != '0' && map[i][j - 1] != '2'
 		&& map[i][j - 1] != '1')
-		return (printf("Error\nLine %d\nLine : %s", i, map[i]), TRUE);
+		return (printf("Error\nMap Line %d\nLine : %s", i, map[i]), TRUE);
 	else
 		return (FALSE);
 }
@@ -67,18 +67,18 @@ bool	check_next_char_col(char **map, int i, int j)
 	if (!map[i + 1] || !map[i + 1][j])
 		return (FALSE);
 	else if ((map[i][j] == ' ' || map[i][j] == '	') && map[i + 1][j] == '0')
-		return (printf("Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("Error\nMap Col %d line %d\n", j, i), TRUE);
 	else if (map[i][j] == '1')
 		return (FALSE);
 	else if ((map[i][j] == '0' || map[i][j] == '2')
 		&& map[i + 1][j] != '1' && map[i + 1][j] != '0' && map[i + 1][j] != '2'
 			&& map[i + 1][j] != 'N' && map[i + 1][j] != 'W'
 			&& map[i + 1][j] != 'S' && map[i + 1][j] != 'E')
-		return (printf("Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("Error\nMap Col %d line %d\n", j, i), TRUE);
 	else if ((map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S' ||
 		map[i + 1][j] == 'W') && map[i + 1][j] != '1'
 			&& map[i + 1][j] != '0' && map[i + 1][j] != '2')
-		return (printf("Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("Error\nMap Col %d line %d\n", j, i), TRUE);
 	else
 		return (FALSE);
 }
@@ -105,24 +105,24 @@ bool	check_prev_char_col(char **map, int i, int j)
 
 	check_eol = check_prevline(map, i - 1, j);
 	if ((i == 0 && map[i][j] != '1' && map[i][j] != '\n'))
-		return (printf("Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("Error\nMap Col %d line %d\n", j, i), TRUE);
 	else if ((i == 0 || !map[i - 1][j]) && map[i][j] == '1')
 		return (FALSE);
 	else if ((map[i][j] == ' ' || map[i][j] == '	') && map[i - 1][j] == '0')
-		return (printf("11Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("11Error\nMap Col %d line %d\n", j, i), TRUE);
 	else if (map[i][j] == '1')
 		return (0);
 	else if ((map[i][j] == '0' || map[i][j] == '2')
 		&& map[i - 1][j] != '1' && map[i - 1][j] != '0' && map[i - 1][j] != '2'
 			&& map[i - 1][j] != 'N' && map[i - 1][j] != 'W'
 			&& map[i - 1][j] != 'S' && map[i - 1][j] != 'E')
-		return (printf("12Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("12Error\nMap Col %d line %d\n", j, i), TRUE);
 	else if ((map[i][j] == '0' || map[i][j] == '2') && check_eol == 1)
-		return (printf("14Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("14Error\nMap Col %d line %d\n", j, i), TRUE);
 	else if ((map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S' ||
 		map[i - 1][j] == 'W') && map[i - 1][j] != '1'
 			&& map[i - 1][j] != '0' && map[i - 1][j] != '2')
-		return (printf("13Error\nCol %d line %d\n", j, i), TRUE);
+		return (printf("13Error\nMap Col %d line %d\n", j, i), TRUE);
 	else
 		return (FALSE);
 }

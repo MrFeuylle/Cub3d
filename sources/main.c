@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 12:15:46 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:12:26 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_data	*set_null_data(t_data *data)
 	data->win = NULL;
 	data->img->img = NULL;
 	data->file = NULL;
+	data->cm = 0;
 	return (data);
 }
 

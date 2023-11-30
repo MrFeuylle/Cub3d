@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 12:53:35 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:13:05 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ bool		check_file(t_data *data, int i);
 /*############################################################################*/
 void		check_fc(t_data *data, char *str);
 bool		check_rgb(t_rgb *rgb);
-bool		check_map(char *str);
+bool		check_map(char **str, t_data *data);
 bool		check_all(t_data *data);
 bool		ft_strcmp(char *str, char *str2);
 /*############################################################################*/

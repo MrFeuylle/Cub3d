@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:48:37 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 12:23:22 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:40:03 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	handle_no_event(t_data *data)
 		view_player(data);
 	if (data->mf == 1 || data->mb == 1)
 		move_playerf(data);
+	if (data->ml == 1 || data->mr == 1)
+		move_playerlr(data);
 	clear_map(data);
 	do_floor_cel(data);
 	raycast(data);
@@ -39,6 +41,10 @@ int	key_press(int keysym, void *d)
 		data->mf = 1;
 	if (keysym == 119)
 		data->mb = 1;
+	if (keysym == 97)
+		data->ml = 1;
+	if (keysym == 100)
+		data->mr = 1;
 	if (keysym == XK_Escape)
 		free_all(data);
 	return (0);
@@ -57,6 +63,10 @@ int	key_release(int keysym, void *d)
 		data->mb = 0;
 	if (keysym == 115)
 		data->mf = 0;
+	if (keysym == 97)
+		data->ml = 0;
+	if (keysym == 100)
+		data->mr = 0;
 	return (0);
 }
 
