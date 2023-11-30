@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 07:44:22 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/29 14:58:09 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:52:48 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	move_playerf(t_data *data)
 	if (data->mf)
 	{
 		if (data->map[(int)(data->player->y)]
-		[(int)(data->player->x - data->player->dx * 0.1)] == '0' ||
+		[(int)(data->player->x - data->player->dx * 0.3)] == '0' ||
 		data->map[(int)(data->player->y)]
-		[(int)(data->player->x - data->player->dx * 0.1)] == '6')
+		[(int)(data->player->x - data->player->dx * 0.3)] == '6')
 			data->player->x -= data->player->dx * 0.1;
-		if (data->map[(int)(data->player->y - data->player->dy * 0.1)]
+		if (data->map[(int)(data->player->y - data->player->dy * 0.3)]
 		[(int)(data->player->x)] == '0' ||
-		data->map[(int)(data->player->y - data->player->dy * 0.1)]
+		data->map[(int)(data->player->y - data->player->dy * 0.3)]
 		[(int)(data->player->x)] == '6')
 			data->player->y -= data->player->dy * 0.1;
 	}
@@ -75,6 +75,33 @@ void	move_playerb(t_data *data)
 	}
 }
 
+bool	check_not_to_close(t_data *data)
+{
+	double	new_x;
+	double	new_y;
+
+	if (data->mr)
+	{
+		new_x = data->player->x - data->player->dy * 0.3;
+		new_y = data->player->y + data->player->dx * 0.3;
+	}
+	if (data->ml)
+	{
+		new_x = data->player->x + data->player->dy * 0.3;
+		new_y = data->player->y - data->player->dx * 0.3;
+	}
+	if (data->map[(int)new_y][(int)new_x] != '1'
+		&& data->map[(int)new_y][(int)new_x] != '2'
+		&& data->map[(int)new_y][(int)new_x] != '3'
+		&& data->map[(int)new_y][(int)new_x] != '4'
+		&& data->map[(int)new_y][(int)new_x] != '5'
+		&& data->map[(int)new_y][(int)new_x] != '7'
+		&& data->map[(int)new_y][(int)new_x] != '8'
+		&& data->map[(int)new_y][(int)new_x] != '9')
+		return (TRUE);
+	return (FALSE);
+}
+
 void	move_playerlr(t_data *data)
 {
 	double	new_x;
@@ -90,14 +117,7 @@ void	move_playerlr(t_data *data)
 		new_x = data->player->x + data->player->dy * 0.1;
 		new_y = data->player->y - data->player->dx * 0.1;
 	}
-	if (data->map[(int)new_y][(int)new_x] != '1'
-		&& data->map[(int)new_y][(int)new_x] != '2'
-		&& data->map[(int)new_y][(int)new_x] != '3'
-		&& data->map[(int)new_y][(int)new_x] != '4'
-		&& data->map[(int)new_y][(int)new_x] != '5'
-		&& data->map[(int)new_y][(int)new_x] != '7'
-		&& data->map[(int)new_y][(int)new_x] != '8'
-		&& data->map[(int)new_y][(int)new_x] != '9')
+	if (check_not_to_close(data))
 	{
 		data->player->x = new_x;
 		data->player->y = new_y;

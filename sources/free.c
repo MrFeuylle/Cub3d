@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:43 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/29 14:21:23 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:13:31 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_all(t_data *data)
 	i = 0;
 	mlx_free(data);
 	free_all2(data);
-	while (data->file[i])
+	while (data->file && data->file[i])
 	{
 		ffree(data->file[i]);
 		i++;

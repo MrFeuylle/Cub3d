@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:43 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/29 14:00:56 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:13:41 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	free_all(t_data *data)
 	ffree(data->player);
 	ffree(data->ray);
 	ffree(data->img);
-	while (data->file[i])
+	while (data->file && data->file[i])
 	{
 		ffree(data->file[i]);
 		i++;

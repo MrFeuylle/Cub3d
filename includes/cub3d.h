@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 17:51:33 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/29 15:45:19 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:53:35 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int			cross_kill(t_data *data);
 void		view_player(t_data *data);
 void		move_playerf(t_data *data);
 void		move_playerb(t_data *data);
+bool		check_not_to_close(t_data *data);
 void		move_playerlr(t_data *data);
 /*############################################################################*/
 /*--------------------------------FREE/BONUS.C--------------------------------*/

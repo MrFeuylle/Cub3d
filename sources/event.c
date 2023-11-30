@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:48:37 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/28 15:22:59 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 12:23:22 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_no_event(t_data *data)
 {
-	usleep(33333);
+	usleep(16666);
 	if (data->rl == 1 || data->rr)
 		view_player(data);
 	if (data->mf == 1 || data->mb == 1)
