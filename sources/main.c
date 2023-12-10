@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 02:06:25 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 14:12:26 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:20:41 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_data	*set_null_data(t_data *data)
 	data->img->img = NULL;
 	data->file = NULL;
 	data->cm = 0;
+	data->xo = WIDTH / 2;
+	data->yo = HEIGHT / 2;
 	return (data);
 }
 
@@ -118,7 +120,7 @@ int	main(int argc, char **argv)
 		return (1);
 	data = set_null_data(data);
 	data->mlx = mlx_init();
-	if (parsing(data, argv[1]))
+	if (!data->mlx || parsing(data, argv[1]))
 		return (free_all(data), 1);
 	rayinit(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img, 0, 0);

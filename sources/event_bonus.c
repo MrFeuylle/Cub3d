@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:48:37 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 12:22:27 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:16:49 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	handle_no_event(t_data *data)
 	usleep(16666);
 	mouse_hook(data);
 	mlx_mouse_move(data->mlx, data->win, WIDTH / 2, HEIGHT / 2);
-	mlx_mouse_get_pos(data->mlx, data->win, &data->xo, &data->yo);
 	if (data->rl == 1 || data->rr)
 		view_player(data);
 	if (data->mf == 1 || data->mb == 1)

@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:43:15 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 14:18:50 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:11:00 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool	check_file(t_data *data, int i)
 			check_fc(data, data->file[i]);
 		else if (ft_strcmp(data->file[i], "C "))
 			check_fc(data, data->file[i]);
-		else if (check_map(data->file[i]) && !data->cm)
+		else if (check_map(&data->file[i], data) && !data->cm)
 		{
 			if (!map_error_controler(&data->file[i], data))
 				data->map = &data->file[i];

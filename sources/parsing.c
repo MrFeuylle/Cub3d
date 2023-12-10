@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 22:24:26 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 14:19:05 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 14:43:30 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool	check_file(t_data *data, int i)
 		{
 			if (!map_error_controler(&data->file[i], data))
 				data->map = &data->file[i];
-			break ;
+			return (check_all(data));
 		}
 	}
 	return (check_all(data));

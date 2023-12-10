@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlarue <jlarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 05:49:48 by jlarue            #+#    #+#             */
-/*   Updated: 2023/11/23 14:26:26 by jlarue           ###   ########.fr       */
+/*   Updated: 2023/12/10 14:56:08 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_player_direction(char dir, t_player *player)
 {
 	if (dir == 'N')
 	{
-		player->dx = 0;
+		player->dx = -0;
 		player->dy = -1;
 	}
 	else if (dir == 'E')
@@ -56,8 +56,9 @@ void	init_player_position(t_player *player, char **map)
 				player->x += 0.5;
 				player->y = i;
 				player->y += 0.5;
+				init_player_direction(map[i][j], player);
 				map[i][j] = '0';
-				return (init_player_direction(map[i][j], player));
+				return ;
 			}
 			j++;
 		}

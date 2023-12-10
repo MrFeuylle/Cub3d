@@ -6,7 +6,7 @@
 /*   By: agiguair <agiguair@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 01:35:59 by agiguair          #+#    #+#             */
-/*   Updated: 2023/11/30 14:17:55 by agiguair         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:01:31 by agiguair         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,10 @@ bool	check_map(char **str, t_data *data)
 			j = -1;
 			while (str[i][++j])
 			{
-				if (str[i][j] == 'N' || str[i][j] == 'S'
-					|| str[i][j] == 'W' || str[i][j] == 'E'
-						|| ft_isdigit(str[i][j]))
+				if (ft_isdigit(str[i][j]))
 					break ;
 			}
-			if (!str[i][j] && data->cm++)
+			if (j != 0 && str[i][j] == '\0' && data->cm++)
 				return (free(str2), FALSE);
 		}
 		return (free(str2), TRUE);
